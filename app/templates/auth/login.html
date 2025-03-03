@@ -1,0 +1,30 @@
+<!-- app/templates/auth/login.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li><strong>{{ category }}:</strong> {{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('auth.login') }}">
+        <label for="username">Benutzername:</label>
+        <input type="text" name="username" id="username" required><br><br>
+
+        <label for="password">Passwort:</label>
+        <input type="password" name="password" id="password" required><br><br>
+
+        <button type="submit">Anmelden</button>
+    </form>
+    <p>Noch kein Konto? <a href="{{ url_for('auth.register') }}">Registrieren</a></p>
+</body>
+</html>
