@@ -1,12 +1,16 @@
-# app/routes/main.py
-from flask import Blueprint, render_template
+from flask import Blueprint, request, redirect, url_for, make_response, render_template, session
+from flask_babel import gettext as _
 
 main = Blueprint('main', __name__)
 
-@main.route('/')
+@main.route('/menu')
 def menu():
     return render_template('main/menu.html')
 
-@main.route('/report')
-def report():
-    return render_template('main/report.html')
+@main.route('/set_language/<lang_code>')
+def set_language(lang_code):
+    supported = ["de", "en", "fr"]
+    if lang_code not in supported:
+        lang_code = "de"
+    session['lang'] = lang_code  # Sprache in der Session speichern
+    return redirect(request.referrer or url_for('main.menu'))

@@ -1,30 +1,52 @@
 <!-- app/templates/auth/login.html -->
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{ get_locale() }}">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>{{ _("Login") }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth/css/auth.css') }}">
 </head>
 <body>
-    <h1>Login</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <ul>
-          {% for category, message in messages %}
-            <li><strong>{{ category }}:</strong> {{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-    <form method="POST" action="{{ url_for('auth.login') }}">
-        <label for="username">Benutzername:</label>
-        <input type="text" name="username" id="username" required><br><br>
+    <div class="auth-box">
+        <img src="{{ url_for('static', filename='media/group_logo.png') }}" alt="{{ _('Logo') }}" class="logo">
+        <h1>{{ _("Login") }}</h1>
+        <div class="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul>
+                  {% for category, message in messages %}
+                    <li><strong>{{ _(category) }}:</strong> {{ _(message) }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </div>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            <label for="username">{{ _("Benutzername") }}:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">{{ _("Passwort") }}:</label>
+            <input type="password" name="password" id="password" required>
+            <button type="submit">{{ _("Anmelden") }}</button>
+        </form>
+        <a href="{{ url_for('auth.register') }}">{{ _("Noch kein Konto? Registrieren") }}</a>
+        
+        <!-- Sprachumschaltung als Dropdown-Menü -->
+        <div class="language-switch">
+            <p>Aktuelle Sprache: {{ get_locale() }}</p>
+            <p>{{ _("Sprache wählen:") }}</p>
+            <select id="language-select" onchange="changeLanguage(this.value)">
+                <option value="de" {% if get_locale() == 'de' %}selected{% endif %}>Deutsch</option>
+                <option value="en" {% if get_locale() == 'en' %}selected{% endif %}>English</option>
+                <option value="fr" {% if get_locale() == 'fr' %}selected{% endif %}>Français</option>
+            </select>
+        </div>
+    </div>
 
-        <label for="password">Passwort:</label>
-        <input type="password" name="password" id="password" required><br><br>
-
-        <button type="submit">Anmelden</button>
-    </form>
-    <p>Noch kein Konto? <a href="{{ url_for('auth.register') }}">Registrieren</a></p>
+    <script>
+    function changeLanguage(lang) {
+        // Ersetzt den Platzhalter in der URL durch den gewünschten Sprachcode.
+        window.location.href = "{{ url_for('main.set_language', lang_code='__lang__') }}".replace('__lang__', lang);
+    }
+    </script>
 </body>
 </html>
