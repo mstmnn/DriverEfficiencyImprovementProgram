@@ -14,3 +14,6 @@ def set_language(lang_code):
         lang_code = "de"
     session['lang'] = lang_code  # Sprache in der Session speichern
     return redirect(request.referrer or url_for('main.menu'))
+
+
+

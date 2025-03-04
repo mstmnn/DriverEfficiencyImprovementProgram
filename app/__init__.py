@@ -1,11 +1,12 @@
 import os
 from flask import Flask, request, session
 from flask_cors import CORS
+from flask_babel import Babel, gettext, force_locale, _
 from app.extensions import db  # z.B. Flask-SQLAlchemy-Objekt
-from flask_babel import Babel
 
 def create_app():
-    app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates"))
+    app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates/"))
+
     app.config["DEBUG"] = True
     app.config["SECRET_KEY"] = "dein_einzigartiger_geheimer_schluessel"
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///{}".format(
@@ -16,6 +17,8 @@ def create_app():
     # Babel-Konfiguration
     app.config["BABEL_DEFAULT_LOCALE"] = "de"
     app.config["BABEL_SUPPORTED_LOCALES"] = ["de", "en", "fr"]
+    app.config["BABEL_TRANSLATION_DIRECTORIES"] = os.path.join(os.path.dirname(os.path.dirname(__file__)), "translations")
+
 
     CORS(app, resources={r"/*": {"origins": "*"}})
     db.init_app(app)
@@ -34,6 +37,7 @@ def create_app():
 
     babel = Babel(app)
 
+
     def get_locale():
         lang = session.get('lang')
         print("Aktuelle Session-Sprache:", lang)  # Debug-Ausgabe
@@ -43,12 +47,14 @@ def create_app():
         print("Accept-Language Fallback:", best)
         return best
 
-
-    babel.locale_selector_func = get_locale
-
+    babel.init_app(app, locale_selector=get_locale)
     @app.context_processor
     def inject_locale():
-        return dict(get_locale=get_locale)
+        print("inject_locale wurde aufgerufen!")  # Debug-Ausgabe
+        return dict(get_locale=get_locale, gettext=gettext)
+    
+    with force_locale("fr"):
+        print(gettext("Benutzername"))
 
     return app
 
