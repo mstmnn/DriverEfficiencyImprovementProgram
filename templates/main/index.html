@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ _("Home") }}</title>
+</head>
+<body>
+  <h1>{{ greeting }}</h1>
+  <p>
+    <a href="{{ url_for('auth.login') }}">{{ _("Login") }}</a> | 
+    <a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a>
+  </p>
+  <p>
+    <a href="{{ url_for('datamodel.list_users') }}">{{ _("View Users") }}</a>
+  </p>
+</body>
+</html>
