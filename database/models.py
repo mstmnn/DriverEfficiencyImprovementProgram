@@ -20,7 +20,6 @@ class User(db.Model):
     role = db.Column(db.Integer, db.ForeignKey('user_roles.id'))
     password = db.Column(db.String(255), nullable=False)
     confirmed = db.Column(db.Boolean, default=False, nullable=False)  # Neues Feld für Email-Bestätigung
-
     user_role = db.relationship('UserRole', backref=db.backref('users', lazy=True))
     results = db.relationship('Result', backref='user', lazy=True)
     trips = db.relationship('TripBaseData', backref='driver', lazy=True)

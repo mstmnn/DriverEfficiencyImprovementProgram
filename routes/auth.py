@@ -1,14 +1,15 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+# routes/auth.py
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session, current_app
 from flask_babel import _
 from database.models import db, User
 from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message, Mail
 
-# Annahme: Du hast Flask-Mail in deiner App konfiguriert
-mail = Mail()  # wird in der App initialisiert
+# Mail-Objekt, das in create_app() initialisiert wird
+mail = Mail()
 
-# Serializer für Token-Erstellung
-serializer = URLSafeTimedSerializer('DEIN_SECRET_KEY')
+# Nutze denselben geheimen Schlüssel wie in der App-Konfiguration
+serializer = URLSafeTimedSerializer('dein-geheimer-schluessel')
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth', template_folder='../templates/auth')
 
@@ -35,7 +36,10 @@ def register():
         confirm_url = url_for('auth.confirm_email', token=token, _external=True)
         html = render_template('activate.html', confirm_url=confirm_url)
         subject = _('Please confirm your email')
-        msg = Message(subject, recipients=[email], html=html)
+        # Verwende current_app, um auf die Konfiguration zuzugreifen:
+        msg = Message(subject, 
+                      sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'your_email@example.com'),
+                      recipients=[email], html=html)
         mail.send(msg)
         
         flash(_('Registration successful. Please check your email to confirm your account.'), 'success')
@@ -46,7 +50,7 @@ def register():
 def confirm_email(token):
     try:
         email = serializer.loads(token, salt='email-confirm-salt', max_age=3600)
-    except Exception as e:
+    except Exception:
         flash(_('The confirmation link is invalid or has expired.'), 'danger')
         return redirect(url_for('auth.login'))
     
