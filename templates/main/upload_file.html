@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ _("Upload File") }}</title>
+  <!-- Dropzone CSS (über CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" integrity="sha512-HqqTjN9p95+Z2EObZt8VX2m9+4rvqJJbRz9XTh2p1+HkNfoqZ7Y6dS8f6v7voEJ7SIT7+FrgXK6K5FTbI0ddVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Basis-Styles für die Seite */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .upload-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    /* Dropzone Styles: Hier kannst du weitere Anpassungen vornehmen */
+    .dropzone {
+      border: 2px dashed #ccc;
+      border-radius: 4px;
+      background: #fafafa;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Alternative File Input */
+    .file-input-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Vorschau */
+    .preview {
+      display: none;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      background: #fafafa;
+    }
+    .preview h3 {
+      margin: 0 0 10px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'components/menu.html' %}
+  <div class="upload-container">
+    <h1>{{ _("Upload File") }}</h1>
+    <p>{{ _("Drag and drop an Excel file into the dropzone below, or select a file from your computer.") }}</p>
+    
+    <!-- Dropzone-Form -->
+    <form action="{{ url_for('main.upload_file_handler') }}" class="dropzone" id="excelDropzone">
+      <div class="dz-message">
+        <strong>{{ _("Drop Excel file here") }}</strong><br>
+        <span>{{ _("or click to select file") }}</span>
+      </div>
+    </form>
+    
+    <!-- Alternative File Input -->
+    <div class="file-input-container">
+      <input type="file" id="fileInput" accept=".xls,.xlsx">
+    </div>
+    
+    <!-- File Preview Area -->
+    <div class="preview" id="filePreview">
+      <h3>{{ _("File Preview") }}</h3>
+      <p id="fileDetails"></p>
+    </div>
+  </div>
+  
+  <!-- DropzoneJS Script (über CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-I1+YYgQEV8RYvIm0rd0s7rbUDFrk4+cEg6kDOk6EutmwghwHTLP4W/78GqhkRRnThkhALJ6yVZ5D9HZ/Cb4d1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    // Dropzone initialisieren
+    Dropzone.autoDiscover = false;
+    const myDropzone = new Dropzone("#excelDropzone", {
+      paramName: "file",
+      maxFilesize: 10, // MB
+      acceptedFiles: ".xls,.xlsx",
+      init: function() {
+        this.on("addedfile", function(file) {
+          showPreview(file);
+        });
+        this.on("success", function(file, response) {
+          // Hier kannst du mit der Serverantwort arbeiten, falls nötig.
+          showPreview(file);
+        });
+      }
+    });
+    
+    // Alternative File Input
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if(file) {
+        showPreview(file);
+      }
+    });
+    
+    // Funktion zur Anzeige der Vorschau (Name, Größe, Typ)
+    function showPreview(file) {
+      const preview = document.getElementById('filePreview');
+      const fileDetails = document.getElementById('fileDetails');
+      preview.style.display = 'block';
+      fileDetails.innerHTML = `<strong>{{ _("File Name") }}:</strong> ${file.name}<br>
+                               <strong>{{ _("File Size") }}:</strong> ${(file.size / 1024).toFixed(2)} KB<br>
+                               <strong>{{ _("File Type") }}:</strong> ${file.type}`;
+    }
+  </script>
+</body>
+</html>

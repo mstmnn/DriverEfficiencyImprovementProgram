@@ -1,0 +1,30 @@
+<!-- language_dropdown.html -->
+<style>
+    /* Styles für das Language-DropDown */
+    .language-dropdown {
+      margin: 10px 0;
+      text-align: center;
+    }
+    .language-dropdown select {
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: #333;
+      transition: border-color 0.3s ease;
+    }
+    .language-dropdown select:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+  </style>
+  
+  <div class="language-dropdown">
+    <select onchange="location = this.value;">
+      <option value="?lang=en" {% if get_locale() == 'en' %}selected{% endif %}>English</option>
+      <option value="?lang=de" {% if get_locale() == 'de' %}selected{% endif %}>Deutsch</option>
+      <option value="?lang=fr" {% if get_locale() == 'fr' %}selected{% endif %}>Francais</option>
+    </select>
+  </div>
+  

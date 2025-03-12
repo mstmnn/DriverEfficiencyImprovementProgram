@@ -13,15 +13,17 @@
     </div>
     <h1>{{ _("Login") }}</h1>
     <form method="post" class="auth-form">
-      <label for="username">{{ _("Username") }}:</label>
-      <input type="text" name="username" required>
+      <label for="login">{{ _("Username or Email") }}:</label>
+      <input type="text" name="login" required>
       <br>
       <label for="password">{{ _("Password") }}:</label>
       <input type="password" name="password" required>
       <br>
       <button type="submit">{{ _("Login") }}</button>
     </form>
-    <p><a href="{{ url_for('main.index') }}">{{ _("Back to Home") }}</a></p>
+    <p><a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a></p>
+    <!-- Sprachumschaltung -->
+    {% include 'components/language_dropdown.html' %}
   </div>
 </body>
 </html>

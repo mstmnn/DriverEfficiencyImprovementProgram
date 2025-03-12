@@ -2,16 +2,25 @@
 <html lang="{{ get_locale() }}">
 <head>
   <meta charset="utf-8">
-  <title>{{ _("Home") }}</title>
+  <title>{{ _("Welcome") }}</title>
+  <style>
+    /* Optional: Basis-Styles für den Hauptinhalt */
+    .content {
+      margin-left: 250px; /* Sidebar-Breite */
+      padding: 20px;
+      background: #f4f4f4;
+      min-height: 100vh;
+    }
+  </style>
 </head>
 <body>
-  <h1>{{ greeting }}</h1>
-  <p>
-    <a href="{{ url_for('auth.login') }}">{{ _("Login") }}</a> | 
-    <a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a>
-  </p>
-  <p>
-    <a href="{{ url_for('datamodel.list_users') }}">{{ _("View Users") }}</a>
-  </p>
+  <!-- Menü-Komponente einbinden -->
+  {% include 'components/menu.html' %}
+  
+  <!-- Hauptinhalt -->
+  <div class="content">
+    <h1>{{ greeting }}</h1>
+    <p>{{ _("Welcome to our application!") }}</p>
+  </div>
 </body>
 </html>

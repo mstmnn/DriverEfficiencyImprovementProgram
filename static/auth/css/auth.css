@@ -1,46 +1,57 @@
-/* Hintergrundbild für die gesamte Seite */
-body {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background: url("../media/background.jpg") no-repeat center center fixed;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/static/media/background.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: Arial, sans-serif;
   }
   
-  /* Gemeinsamer Container für die Authentifizierungsseiten */
   .auth-container {
-    max-width: 400px;
-    margin: 100px auto;
+    width: 20rem;           /* 400px */
     background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 1.88rem;        /* 30px */
+    border-radius: 0.63rem;  /* 10px */
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.4);  /* 20px */
     text-align: center;
   }
   
-  /* Styling für das Formular */
   .auth-form label {
     display: block;
-    margin-bottom: 5px;
     text-align: left;
+    width: calc(100% - 2rem); /* 2rem Abzug, damit 1rem links und 1rem rechts frei bleiben */
+    margin: 0 1rem 0.1rem;   /* 1rem links/rechts, 0.94rem unten */
+  }
+  
+  /* Wende box-sizing auf Input-Felder und Button an */
+  .auth-form input,
+  .auth-form button {
+    box-sizing: border-box;
   }
   
   .auth-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: calc(100% - 2rem); /* 2rem Abzug, damit 1rem links und 1rem rechts frei bleiben */
+    padding: 0.63rem;        /* 10px */
+    margin: 0 1rem 0.94rem;   /* 1rem links/rechts, 0.94rem unten */
+    border: 0.06rem solid #ccc; /* ca. 1px */
+    border-radius: 0.31rem;   /* 5px */
   }
   
   .auth-form button {
-    width: 100%;
-    padding: 10px;
+    width: calc(100% - 2rem);
+    padding: 0.63rem;        /* 10px */
+    margin: 0 1rem 0;
     background-color: #007BFF;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.31rem;   /* 5px */
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;         /* 16px */
     cursor: pointer;
   }
   
@@ -48,9 +59,14 @@ body {
     background-color: #0056b3;
   }
   
-  /* Styling für das Firmenlogo in der Login-Seite */
   .logo img {
-    max-width: 150px;
-    margin-bottom: 20px;
+    max-width: 9.38rem;       /* 150px */
+    margin-bottom: 1.25rem;   /* 20px */
+  }
+  
+
+  .language-selector {
+    text-align: center;
+    margin-bottom: 1.25rem; /* entspricht ca. 20px */
   }
   
