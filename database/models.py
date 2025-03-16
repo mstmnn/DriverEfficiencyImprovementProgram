@@ -11,16 +11,27 @@ class UserRole(db.Model):
     def __repr__(self):
         return f'<UserRole {self.role_name}>'
 
+    @staticmethod
+    def create_default_roles():
+        # Erstelle Standardrollen, falls sie noch nicht existieren
+        roles = ['Admin', 'Manager', 'Driver']
+        for role in roles:
+            if not UserRole.query.filter_by(role_name=role).first():
+                new_role = UserRole(role_name=role)
+                db.session.add(new_role)
+        db.session.commit()
+
+
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     telephone = db.Column(db.String(50))
-    role = db.Column(db.Integer, db.ForeignKey('user_roles.id'))
+    role_id = db.Column(db.Integer, db.ForeignKey('user_roles.id'))  # Verknüpfen mit UserRole
     password = db.Column(db.String(255), nullable=False)
     confirmed = db.Column(db.Boolean, default=False, nullable=False)  # Neues Feld für Email-Bestätigung
-    user_role = db.relationship('UserRole', backref=db.backref('users', lazy=True))
+    user_role = db.relationship('UserRole', backref=db.backref('users', lazy=True))  # Beziehung zu UserRole
     results = db.relationship('Result', backref='user', lazy=True)
     trips = db.relationship('TripBaseData', backref='driver', lazy=True)
 
@@ -30,6 +41,9 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
     
+    def get_role(self):
+        return self.user_role.role_name
+
     def __repr__(self):
         return f'<User {self.username}>'
 

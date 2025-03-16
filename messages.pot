@@ -1,62 +1,168 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-04 14:20+0100\n"
+"POT-Creation-Date: 2025-03-16 11:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.17.0\n"
+"Generated-By: Babel 2.16.0\n"
 
-#: blueprints/auth.py:14
-msgid "Logged in successfully."
-msgstr ""
-
-#: blueprints/auth.py:18
-msgid "Invalid username or password."
-msgstr ""
-
-#: blueprints/auth.py:27
+#: routes/auth.py:23
 msgid "Username already exists."
 msgstr ""
 
-#: blueprints/auth.py:33
-msgid "Registration successful. Please login."
+#: routes/auth.py:26
+msgid "Email already exists."
 msgstr ""
 
-#: blueprints/main.py:8
+#: routes/auth.py:38
+msgid "Please confirm your email"
+msgstr ""
+
+#: routes/auth.py:45
+msgid "Registration successful. Please check your email to confirm your account."
+msgstr ""
+
+#: routes/auth.py:54
+msgid "The confirmation link is invalid or has expired."
+msgstr ""
+
+#: routes/auth.py:59
+msgid "Account already confirmed. Please login."
+msgstr ""
+
+#: routes/auth.py:63
+msgid "You have confirmed your account. Thank you!"
+msgstr ""
+
+#: routes/auth.py:77
+msgid "Please confirm your email address before logging in."
+msgstr ""
+
+#: routes/auth.py:79
+msgid "Logged in successfully."
+msgstr ""
+
+#: routes/auth.py:83
+msgid "Invalid username/email or password."
+msgstr ""
+
+#: routes/auth.py:89
+msgid "You have been logged out."
+msgstr ""
+
+#: routes/main.py:18
 msgid "Hello, World!"
 msgstr ""
 
-#: templates/auth/login.html:5 templates/auth/login.html:8
-#: templates/auth/login.html:16 templates/main/index.html:10
+#: routes/main.py:23 templates/components/menu.html:145
+#: templates/main/upload_file.html:5 templates/main/upload_file.html:54
+msgid "Upload File"
+msgstr ""
+
+#: routes/main.py:29
+msgid "No file part"
+msgstr ""
+
+#: routes/main.py:34
+msgid "No selected file"
+msgstr ""
+
+#: routes/main.py:47
+msgid "Error reading Excel file: "
+msgstr ""
+
+#: routes/main.py:119
+msgid "File type not allowed"
+msgstr ""
+
+#: routes/overview.py:9 templates/components/menu.html:146
+msgid "Overview"
+msgstr ""
+
+#: routes/settings.py:9 templates/components/menu.html:154
+msgid "Settings"
+msgstr ""
+
+#: templates/auth/login.html:5 templates/auth/login.html:14
+#: templates/auth/login.html:22 templates/auth/register.html:27
 msgid "Login"
 msgstr ""
 
-#: templates/auth/login.html:10 templates/auth/register.html:10
-msgid "Username"
+#: templates/auth/login.html:16
+msgid "Username or Email"
 msgstr ""
 
-#: templates/auth/login.html:13 templates/auth/register.html:13
+#: templates/auth/login.html:19 templates/auth/register.html:19
 msgid "Password"
 msgstr ""
 
-#: templates/auth/login.html:18 templates/auth/register.html:18
-msgid "Back to Home"
-msgstr ""
-
-#: templates/auth/register.html:5 templates/auth/register.html:8
-#: templates/auth/register.html:16 templates/main/index.html:11
+#: templates/auth/login.html:24 templates/auth/register.html:5
+#: templates/auth/register.html:14 templates/auth/register.html:25
 msgid "Register"
 msgstr ""
 
-#: templates/main/index.html:5
-msgid "Home"
+#: templates/auth/register.html:16
+msgid "Email"
 msgstr ""
 
-#: templates/main/index.html:14
-msgid "View Users"
+#: templates/auth/register.html:22
+msgid "Confirm Password"
 msgstr ""
+
+#: templates/components/menu.html:141
+msgid "Menu"
+msgstr ""
+
+#: templates/components/menu.html:156
+msgid "Logout"
+msgstr ""
+
+#: templates/main/index.html:5
+msgid "Welcome"
+msgstr ""
+
+#: templates/main/index.html:23
+msgid "Welcome to our application!"
+msgstr ""
+
+#: templates/main/upload_file.html:55
+msgid ""
+"Drag and drop an Excel file into the dropzone below, or select a file "
+"from your computer."
+msgstr ""
+
+#: templates/main/upload_file.html:60
+msgid "Drop Excel file here"
+msgstr ""
+
+#: templates/main/upload_file.html:61
+msgid "or click to select file"
+msgstr ""
+
+#: templates/main/upload_file.html:72
+msgid "File Preview"
+msgstr ""
+
+#: templates/main/upload_file.html:111
+msgid "File Name"
+msgstr ""
+
+#: templates/main/upload_file.html:112
+msgid "File Size"
+msgstr ""
+
+#: templates/main/upload_file.html:113
+msgid "File Type"
+msgstr ""
+
