@@ -1,0 +1,30 @@
+<!-- templates/drivers_archive.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        {% for driver in archive_data %}
+        <div class="card my-3">
+            <div class="card-header">
+                {{ driver.username }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Archivierte Scores</h5>
+                <ul class="list-group">
+                    {% for entry in driver.archived_scores %}
+                    <li class="list-group-item">{{ entry.month }}: {{ entry.score }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="{{ url_for('drivers.overview') }}" class="btn btn-primary">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

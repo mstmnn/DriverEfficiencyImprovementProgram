@@ -1,0 +1,69 @@
+use 
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('edwin.ernst', 'trlpernst@gmail.com', '15118067348', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('klaus.lendowski', 'trlplendowski@gmail.com', '15118067341', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('reiner.laubenthal', 'trlplaubenthal@gmail.com', '15118067342', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('norbert.metzen', 'trlpmetzen@gmail.com', '15118067337', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('daniel-codrut.hotca', 'trlpdhotca@gmail.com', '15118067344', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('dawid.ziolkowski', 'trlpziolowski@gmail.com', '15118067332', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('hans-dieter.rinder', 'trlprinder@gmail.com', '15118067339', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('jessica.wagner', 'trlpjwagner@gmail.com', '15118067338', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('hartmut.müller', 'trlphmueller@gmail.com', '15128495734', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('sergej.danderfer', 'trlpdanderfer@gmail.com', '15118067349', 4, SHA2('Lorang.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('roger.hölzemer', 'trlphoelzemer@gmail.com', '15118067369', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('paul-nicolae.balanean', 'trlpbalanean@gmail.com', '15118067353', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('thorsten.weinert', 'trlpweinert@gmail.com', '15118067365', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('serhii.litvinov', 'trlpserhii@gmail.com', '15118067330', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('ana-maria.hotca', 'trlpahotca@gmail.com', '15118067400', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('ioan-cristian.orga', 'trlpiorga@gmail.com', '15118067364', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('sabin.ottu', 'trlpsottu@gmail.com', '15118067345', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('konstantyn.sokol', 'trlpksokol@gmail.com', '15118067351', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('andreas.schreiber', 'trlpaschreiber@gmail.com', '15118067301', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('laimontas.dobradziejius', 'trlpdobradziejius@gmail.com', '15118067343', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('alexander.krapp', 'trlpkrapp@gmail.com', '15118067356', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('oleksandr.saksonov', 'trlpsaksonov@gmail.com', '15118067333', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('marat.eleusizov', 'trlpeleusizov@gmail.com', '15118067334', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('viorel.ottu', 'trlpottu@gmail.com', '15118067345', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('edwin.schmitz', 'trlpschmitz@gmail.com', '15118067359', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('markus.gukelberger', 'trlpgukelberger@gmail.com', '15118067335', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('birgit.schmitt', 'trlpschmitt@gmail.com', '15118067336', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('viktor.moor', 'trlpvmoor@gmail.com', '15118067355', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('horst.gesellgen', 'trlpgesellgen@gmail.com', '15118067350', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('marcel.maute', 'trlpmaute@gmail.com', '15118067347', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('andreas.strosing', 'trlpstrosing@gmail.com', '15118067340', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('ali.beyrami', 'trlpbeyrami@gmail.com', '15118067331', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('azubi.lorang', 'trlpazubi@gmail.com', '15118067346', 4, SHA2('Lorang1.!', 256), 1);
+INSERT INTO `user` (`username`, `email`, `telephone`, `role_id`, `password`, `confirmed`) VALUES 
+('zaid.zaidan', 'trlpzaid@gmail.com', '1608827288', 4, SHA2('Lorang1.!', 256), 1);

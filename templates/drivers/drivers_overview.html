@@ -1,0 +1,36 @@
+<!-- templates/drivers_overview.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <!-- Bootstrap einbinden -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Beispiel: Boxen mit etwas Abstand */
+        .driver-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">{{ title }}</h1>
+        <div class="row">
+            {% for driver in drivers %}
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="{{ url_for('drivers.driver_detail', driver_id=driver.id) }}" style="text-decoration: none; color: inherit;">
+                    <div class="driver-box">
+                        <h5>{{ driver.username }}</h5>
+                        <p>Score: {{ driver.current_score }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

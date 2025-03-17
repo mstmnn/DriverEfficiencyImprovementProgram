@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
-from database.models import User
 from flask_babel import _
+from database.application_models import User
 
 datamodel_bp = Blueprint('datamodel', __name__, url_prefix='/data', template_folder='../templates/datamodel')
 

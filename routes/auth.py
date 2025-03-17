@@ -1,14 +1,11 @@
-# routes/auth.py
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_babel import _
-from database.models import db, User
+from database.application_models import db, User
 from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message, Mail
+from flask_login import login_user, logout_user
 
-# Mail-Objekt, das in create_app() initialisiert wird
 mail = Mail()
-
-# Nutze denselben geheimen Schlüssel wie in der App-Konfiguration
 serializer = URLSafeTimedSerializer('dein-geheimer-schluessel')
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth', template_folder='../templates/auth')
@@ -26,17 +23,16 @@ def register():
             flash(_('Email already exists.'), 'danger')
             return redirect(url_for('auth.register'))
         
-        new_user = User(username=username, email=email, confirmed=False)
+        # Setze standardmäßig die Rolle mit ID 3
+        new_user = User(username=username, email=email, confirmed=False, role_id=3)
         new_user.set_password(password)
         db.session.add(new_user)
         db.session.commit()
         
-        # Generiere einen Bestätigungstoken
         token = serializer.dumps(email, salt='email-confirm-salt')
         confirm_url = url_for('auth.confirm_email', token=token, _external=True)
         html = render_template('activate.html', confirm_url=confirm_url)
         subject = _('Please confirm your email')
-        # Verwende current_app, um auf die Konfiguration zuzugreifen:
         msg = Message(subject, 
                       sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'your_email@example.com'),
                       recipients=[email], html=html)
@@ -76,8 +72,8 @@ def login():
             if not user.confirmed:
                 flash(_('Please confirm your email address before logging in.'), 'warning')
                 return redirect(url_for('auth.login'))
+            login_user(user)
             flash(_('Logged in successfully.'), 'success')
-            session['user_id'] = user.id
             return redirect(url_for('main.index'))
         else:
             flash(_('Invalid username/email or password.'), 'danger')
@@ -85,6 +81,6 @@ def login():
 
 @auth_bp.route('/logout')
 def logout():
-    session.pop('user_id', None)
+    logout_user()
     flash(_('You have been logged out.'), 'success')
     return redirect(url_for('auth.login'))

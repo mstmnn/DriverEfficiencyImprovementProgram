@@ -98,7 +98,6 @@
     background: linear-gradient(45deg, #3b5998, #2c3e50);
     transform: translateY(-2px);
   }
-  /* Falls du das Dropdown in diesem Template nicht definierst, wird es später per include ergänzt */
   .settings .language-dropdown {
     margin: 10px 0;
   }
@@ -142,8 +141,21 @@
       <button class="close-btn" id="closeBtn">&times;</button>
     </div>
     <div class="menu">
-      <a href="{{ url_for('main.upload_file') }}">{{ _("Upload File") }}</a>
-      <a href="{{ url_for('overview.overview') }}">{{ _("Overview") }}</a>
+      {% if current_user.is_authenticated %}
+        {% if current_user.get_role() == 'admin' %}
+          <a href="{{ url_for('main.upload_file') }}">{{ _("Upload File") }}</a>
+          <a href="{{ url_for('overview.overview') }}">{{ _("Overview") }}</a>
+        {% elif current_user.get_role() == 'mod' %}
+          <a href="{{ url_for('main.upload_file') }}">{{ _("Upload File") }}</a>
+          <a href="{{ url_for('overview.overview') }}">{{ _("Overview") }}</a>
+        {% elif current_user.get_role() == 'driver' %}
+          <a href="{{ url_for('overview.overview') }}">{{ _("Overview") }}</a>
+        {% elif current_user.get_role() == 'user' %}
+          <a href="{{ url_for('overview.overview') }}">{{ _("Overview") }}</a>
+        {% endif %}
+      {% else %}
+        <a href="{{ url_for('auth.login') }}">{{ _("Login") }}</a>
+      {% endif %}
     </div>
   </div>
   <!-- Unterer Bereich: Einstellungen, Logo, Sprache und Logout -->

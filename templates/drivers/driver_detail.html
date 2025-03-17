@@ -1,0 +1,35 @@
+<!-- templates/driver_detail.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} - {{ driver.username }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ driver.username }}</h1>
+        <p><strong>Email:</strong> {{ driver.email }}</p>
+        <p><strong>Telefonnummer:</strong> {{ driver.telephone or 'Nicht angegeben' }}</p>
+        <!-- Weitere Felder, falls vorhanden -->
+        <h3>Archivierte Scores</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Monat</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in archived_scores %}
+                <tr>
+                    <td>{{ entry.month }}</td>
+                    <td>{{ entry.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('drivers.overview') }}" class="btn btn-primary">Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>
