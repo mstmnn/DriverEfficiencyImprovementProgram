@@ -13,7 +13,7 @@ class UserRole(db.Model):
 
     @staticmethod
     def create_default_roles():
-        roles = ['Admin', 'Manager', 'Driver']
+        roles = ['admin', 'mod', 'user', 'driver']
         for role in roles:
             if not UserRole.query.filter_by(role_name=role).first():
                 new_role = UserRole(role_name=role)

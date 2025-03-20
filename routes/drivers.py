@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, current_app
 from flask_babel import _
-from database.application_models import User, Result  # Result wird hier angenommen als Beziehung zu User
+from database.application_models import User
 from database import db
 from sqlalchemy import Table, MetaData, select
 
